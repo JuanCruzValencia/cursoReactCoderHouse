@@ -1,0 +1,9 @@
+.shop__container {
+    min-height: 100vh;
+    margin-top: 100px;
+}
+
+.shop__title {
+    text-transform: uppercase;
+    text-decoration: underline;
+}

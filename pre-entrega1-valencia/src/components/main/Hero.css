@@ -1,0 +1,9 @@
+.img-fluid {
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+}
+
+.signin__btn {
+    width: 200px;
+}
