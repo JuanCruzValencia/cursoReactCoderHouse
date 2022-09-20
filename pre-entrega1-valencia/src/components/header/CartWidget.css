@@ -1,5 +1,5 @@
 .cart__count {
-    position: fixed;
+    position: absolute;
     right: 70px;
     top: 50px;
     height: 15px;
