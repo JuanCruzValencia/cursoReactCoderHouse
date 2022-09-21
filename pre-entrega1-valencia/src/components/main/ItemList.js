@@ -1,18 +1,9 @@
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
-import './Card.css'
+import ItemCount from "./ItemCount";
+import './ItemList.css'
 
-function CardProduct() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    async function getData() {
-      const resolve = await fetch("https://fakestoreapi.com/products");
-      const products = await resolve.json();
-      setData(products);
-    }
-    getData();
-  }, []);
+function ItemList({data}) {
 
   return data.map((product) => {
     return (
@@ -25,6 +16,7 @@ function CardProduct() {
           <Card.Body>
             <Card.Title>{product.title}</Card.Title>
             <Card.Text>{product.description}</Card.Text>
+            <ItemCount stock={10} initial={1}/>
             <Button variant="primary">Ver</Button>
           </Card.Body>
         </Card>
@@ -32,4 +24,4 @@ function CardProduct() {
   });
 }
 
-export default CardProduct;
+export default ItemList;
