@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Container, Button, Stack } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
+import './ItemCount.css'
 
 function ItemCount({stock, initial, onAdd}) {
   const [counter, setCounter] = useState(0);
@@ -17,12 +18,10 @@ function handleSubClick(){
 
   return (
     <>
-      <Container>
-        <Stack>
+      <Container className="count__container">
           <Button onClick={handleSubClick}>-</Button>
           <span>{counter}</span>
           <Button onClick={handleAddClick}>+</Button>
-        </Stack>
       </Container>
     </>
   );

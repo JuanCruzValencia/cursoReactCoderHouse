@@ -1,0 +1,33 @@
+.item__card {
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  height: 400px;
+  border: 1px solid #000000;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  text-align: justify;
+  box-shadow: 10px 10px 5px 0 #777;
+}
+
+.item__card > img {
+  width: 100%;
+  max-width: 200px;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.itemCard__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: .7rem;
+}
+
+.itemCard__btn {
+  min-width: 150px;
+  background-color: #567;
+  height: 50px;
+  font-weight: 800;
+}
