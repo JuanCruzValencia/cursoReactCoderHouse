@@ -1,12 +1,10 @@
 import { MdOutlineShoppingBag } from "react-icons/md";
-import './CartWidget.css'
+import "./CartWidget.css";
 
 function CartWidget() {
   return (
     <>
-      <a href="#cart">
-        <MdOutlineShoppingBag />
-      </a>
+      <MdOutlineShoppingBag />
       <span className="cart__count">3</span>
     </>
   );

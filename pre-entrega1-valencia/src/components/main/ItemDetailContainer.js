@@ -1,6 +1,9 @@
-import ItemDetail from "./ItemDetail";
-import { useState } from "react";
-import DB from "./DB";
+import ItemDetail from "./item/ItemDetail";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import DB from "./api/DB";
+import { Container } from "react-bootstrap";
+import './ItemDetailContainer.css'
 
 function getItem() {
   const getSelectedProduct = new Promise((res, rej) => {
@@ -12,18 +15,26 @@ function getItem() {
   return getSelectedProduct;
 }
 
-function ItemDetailContainer({ id }) {
-  const [selectedProduct, setSelectedProduct] = useState();
+function ItemDetailContainer() {
+  const { id } = useParams();
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  getItem().then((res) => {
-    let product = res.find((prod) => prod.id === id);
-    setSelectedProduct(product);
-  });
+  useEffect(() => {
+    getItem().then((res) => {
+      setSelectedProduct(res.find((prod) => prod.id === Number(id)));
+      setIsLoading(false);
+    });
+  }, [id]);
 
   return (
-    <>
-      <ItemDetail product={selectedProduct} />
-    </>
+    <Container className="itemDetail__container">
+      {isLoading ? (
+        <span>Loading...</span>
+      ) : (
+        <ItemDetail product={selectedProduct} />
+      )}
+    </Container>
   );
 }
 

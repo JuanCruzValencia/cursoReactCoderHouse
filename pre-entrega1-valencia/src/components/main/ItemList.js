@@ -1,4 +1,4 @@
-import Item from "./Item";
+import Item from "./item/Item";
 
 function ItemList({ data }) {
   return (

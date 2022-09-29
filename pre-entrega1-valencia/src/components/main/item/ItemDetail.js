@@ -1,8 +1,9 @@
 import { Button, Card, Container } from "react-bootstrap";
-import ItemCount from "./ItemCount";
+import ItemCount from "../ItemCount";
 import "./ItemDetail.css";
 
 function ItemDetail({ product }) {
+  
   return (
     <>
       <Card className="itemDetail__card">

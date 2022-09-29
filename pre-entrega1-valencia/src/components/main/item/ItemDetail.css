@@ -1,6 +1,7 @@
 .itemDetail__card {
     display: flex;
     text-align: center;
+    margin: 100px 0;
 }
 
 .itemDetail__body {
@@ -12,7 +13,7 @@
 .itemDetail__body > img {
     max-height: 700px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .flex-row {
@@ -44,3 +45,4 @@
     width: 200px;
     background-color: #567;
 }
+
