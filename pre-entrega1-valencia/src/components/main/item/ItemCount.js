@@ -13,7 +13,11 @@ function handleAddClick(){
 }
 
 function handleSubClick(){
+  if(counter > 0) {
     setCounter(prevCounter => prevCounter - 1)
+  } else {
+    return
+  }
 }
 
   return (

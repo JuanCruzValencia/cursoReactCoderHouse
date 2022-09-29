@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CartWidget from "./widgets/CartWidget";
 import WishWidget from "./widgets/WishWidget";
@@ -17,9 +17,12 @@ function NavBar() {
           Balto
         </Navbar.Brand>
         <Nav className="nav__ul fs-5">
-          <Nav.Link as={Link} to='/' className="nav__li">
-            Shop
-          </Nav.Link>
+          <NavDropdown title='Shop' className="nav__li">
+          <NavDropdown.Item as={Link} to={`/category/men's clothing`}>Ropa Hombre</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/category/jewelery`}>Joyeria</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/category/electronics`}>Electronica</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/category/women's clothing`}>Ropa Mujer</NavDropdown.Item>
+          </NavDropdown>
           <Nav.Link as={Link} to='/about' className="nav__li">
             About
           </Nav.Link>
