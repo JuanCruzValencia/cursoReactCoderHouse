@@ -7,7 +7,8 @@ import ItemDetailContainer from "./components/main/ItemDetailContainer";
 import "./App.css";
 import CartWidget from "./components/header/widgets/CartWidget";
 import WishWidget from "./components/header/widgets/WishWidget";
-import LoginWidget from "./components/header/widgets/LoginWidget";
+import LoginWidget from "./components/header/widgets/userLog/LoginWidget";
+import RegisterWidget from "./components/header/widgets/userLog/RegisterWidget";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/cart" element={<CartWidget />} />
           <Route path="/wishList" element={<WishWidget />} />
           <Route path="/login" element={<LoginWidget />} />
+          <Route path="/register" element={<RegisterWidget />} />
         </Routes>
         <Footer />
       </div>

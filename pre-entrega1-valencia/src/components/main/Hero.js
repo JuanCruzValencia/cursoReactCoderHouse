@@ -1,4 +1,5 @@
 import { Button, Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import './Hero.css'
 
 function Hero() {
@@ -24,7 +25,7 @@ function Hero() {
 
         <Carousel.Caption>
           <h3 className="fs-1 m-5">Desde donde quieras</h3>
-          <Button variant="dark mb-5" className="signin__btn">Registrate</Button>
+          <Link to='/register'><Button variant="dark mb-5" className="signin__btn">Registrate</Button></Link>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
