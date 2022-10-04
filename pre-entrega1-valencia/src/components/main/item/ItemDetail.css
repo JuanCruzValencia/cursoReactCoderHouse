@@ -41,3 +41,8 @@
     text-align: start;
 }
 
+.itemCart__button {
+    width: 200px;
+    background-color: #567;
+    height: 50px;
+}

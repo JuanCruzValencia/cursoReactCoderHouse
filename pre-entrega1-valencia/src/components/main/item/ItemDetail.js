@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import "./ItemDetail.css";
 
@@ -9,7 +10,6 @@ function ItemDetail({ product }) {
   function onAdd(quantityTuAdd) {
     setQuantityToBuy(quantityTuAdd);
   }
-  console.log(quantityToBuy);
   return (
     <Card className="itemDetail__card">
       <Card.Header>{product.category}</Card.Header>
@@ -21,11 +21,17 @@ function ItemDetail({ product }) {
             <Card.Text className="text--large">{product.description}</Card.Text>
           </Container>
           <Container className="flex-row">
-            <ItemCount
-              stock={5}
-              initial={1}
-              onAdd={(number) => onAdd(number)}
-            />
+            {quantityToBuy > 0 ? (
+              <Link to='/cart'>
+                <Button className='itemCart__button'>Continuar al Carrito</Button>
+              </Link>
+            ) : (
+              <ItemCount
+                stock={5}
+                initial={1}
+                onAdd={(number) => onAdd(number)}
+              />
+            )}
           </Container>
         </Container>
       </Card.Body>
