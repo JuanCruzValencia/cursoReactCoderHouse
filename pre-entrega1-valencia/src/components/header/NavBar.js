@@ -5,9 +5,12 @@ import SearchBar from "./SearchBar";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import "./widgets/CartWidget.css";
 import { FaRegUser } from "react-icons/fa";
-
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 function NavBar() {
+  const { cartList } = useContext(CartContext);
+    
   return (
     <Navbar
       className="d-flex justify-content-between"
@@ -50,10 +53,10 @@ function NavBar() {
         </Link>
         <Link to="/cart" className="icons__li p-2 fs-3">
           <MdOutlineShoppingBag />
-          <span className="cart__count">3</span>
+          <span className="cart__count">{cartList.length}</span>
         </Link>
         <Link to="/login" className="icons__li p-2 fs-4">
-        <FaRegUser />
+          <FaRegUser />
         </Link>
       </Container>
     </Navbar>

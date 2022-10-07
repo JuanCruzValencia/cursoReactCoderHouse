@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Card, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import "./ItemDetail.css";
+import { CartContext } from "../../../context/CartContext";
 
 function ItemDetail({ product }) {
-  const [quantityToBuy, setQuantityToBuy] = useState(0);
+  const [quantityToBuy, setQuantityToBuy] = useState({});
+  const { addToCart } = useContext(CartContext);
 
-  function onAdd(quantityTuAdd) {
-    setQuantityToBuy(quantityTuAdd);
+  function onAdd(quantityToAdd) {
+    setQuantityToBuy(quantityToAdd);
   }
+
   return (
     <Card className="itemDetail__card">
       <Card.Header>{product.category}</Card.Header>
@@ -22,8 +25,13 @@ function ItemDetail({ product }) {
           </Container>
           <Container className="flex-row">
             {quantityToBuy > 0 ? (
-              <Link to='/cart'>
-                <Button className='itemCart__button'>Continuar al Carrito</Button>
+              <Link to="/cart">
+                <Button
+                  className="itemCart__button"
+                  onClick={() => addToCart(product, quantityToBuy)}
+                >
+                  Continuar al Carrito
+                </Button>
               </Link>
             ) : (
               <ItemCount
