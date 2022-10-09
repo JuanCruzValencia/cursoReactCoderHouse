@@ -5,7 +5,7 @@ import { useLocalStorage } from "../localStorage/useLocalStorage";
 export const CartContext = createContext({});
 //export custom function contextProvider
 export function CartContextProvider({ children }) {
-  const [cartList, setCartList] = useLocalStorage('cart', []);
+  const [cartList, setCartList] = useLocalStorage("cart", []);
 
   const addToCart = (item, quantity) => {
     if (!isInCart(item.id)) {
@@ -35,14 +35,8 @@ export function CartContextProvider({ children }) {
     cartList,
     addToCart,
     removeList,
-    deleteItem
-  }
+    deleteItem,
+  };
 
-  return (
-    <CartContext.Provider
-      value={data}
-    >
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 }

@@ -1,8 +1,8 @@
-import { AiOutlineHeart } from "react-icons/ai";
+import { WhishList } from "./WhishList";
 
 function WishWidget() {
   return (
-      <AiOutlineHeart />
+      <WhishList />
   );
 }
 

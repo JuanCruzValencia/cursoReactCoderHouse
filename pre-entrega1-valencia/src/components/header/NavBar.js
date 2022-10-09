@@ -48,14 +48,12 @@ function NavBar() {
         <Container className="">
           <SearchBar />
         </Container>
-        <Link to="/wishList" className="icons__li p-2 fs-3">
           <WishWidget />
-        </Link>
-        <Link to="/cart" className="icons__li p-2 fs-3">
+        <Link to="/cart" className="icons__li">
           <MdOutlineShoppingBag />
           <span className="cart__count">{cartList.length}</span>
         </Link>
-        <Link to="/login" className="icons__li p-2 fs-4">
+        <Link to="/login" className="icons__li">
           <FaRegUser />
         </Link>
       </Container>

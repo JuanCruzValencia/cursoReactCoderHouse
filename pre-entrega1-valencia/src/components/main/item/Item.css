@@ -1,17 +1,18 @@
 .item__card {
   display: flex;
-  flex-direction: row;
-  width: 900px;
-  height: 400px;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
   border: 1px solid #000000;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  text-align: justify;
+  text-align: center;
   box-shadow: 10px 10px 5px 0 #777;
 }
 
 .item__card > img {
+  height: 300px;
   width: 100%;
   max-width: 200px;
   object-fit: contain;
@@ -22,6 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   gap: .7rem;
 }
 
