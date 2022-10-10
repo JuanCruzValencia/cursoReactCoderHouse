@@ -1,8 +1,8 @@
-import { WhishList } from "./WhishList";
+import { WishList } from "./WishList";
 
 function WishWidget() {
   return (
-      <WhishList />
+      <WishList />
   );
 }
 

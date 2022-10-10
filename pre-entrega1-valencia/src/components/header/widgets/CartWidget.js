@@ -1,26 +1,16 @@
-import { Button, Container, Stack } from "react-bootstrap";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { CartContext } from "../../../context/CartContext";
+import { useContext } from "react";
+import './CartWidget.css'
 
 function CartWidget() {
+  const { cartLength } = useContext(CartContext);
+
   return (
-    <Container>
-      <h2>Carrito de compras</h2>
-      <Container>
-        <h3>Cards de los diferentes productos</h3>
-      </Container>
-      <Container className="border-top">
-        <Stack direction="horizontal">
-          <h4>Direccion de envio</h4>
-          <b>Precio del envio</b>
-        </Stack>
-        <Stack direction="horizontal">
-          <b>Total con envio</b>
-          <b>$24.234,00</b>
-        </Stack>
-      </Container>
-      <Container className="border-top">
-        <Button size="lg">Comprar</Button>
-      </Container>
-    </Container>
+    <>
+      <MdOutlineShoppingBag />
+      <span className="cart__count">{cartLength()}</span>
+    </>
   );
 }
 

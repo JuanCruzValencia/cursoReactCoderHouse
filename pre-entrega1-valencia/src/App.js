@@ -9,13 +9,13 @@ import LoginWidget from "./components/header/widgets/userLog/LoginWidget";
 import RegisterWidget from "./components/header/widgets/userLog/RegisterWidget";
 import { CartContextProvider } from "./context/CartContext";
 import Cart from "./components/header/widgets/Cart";
-import { WhishListContextProvider } from "./context/WhishListContext";
+import { WishListContextProvider } from "./context/WishListContext";
 
 function App() {
   return (
     <Router>
       <CartContextProvider>
-        <WhishListContextProvider>
+        <WishListContextProvider>
           <div className="App">
             <NavBar />
             <Hero />
@@ -39,7 +39,7 @@ function App() {
             </Routes>
             <Footer />
           </div>
-        </WhishListContextProvider>
+        </WishListContextProvider>
       </CartContextProvider>
     </Router>
   );

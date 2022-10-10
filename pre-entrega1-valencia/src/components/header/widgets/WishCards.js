@@ -1,10 +1,10 @@
 import { Card, Button } from "react-bootstrap";
-import { WhishListContext } from "../../../context/WhishListContext";
+import { WishListContext } from "../../../context/WishListContext";
 import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
 
-export function WhishCards({ data }) {
-  const { removeItem } = useContext(WhishListContext);
+export function WishCards({ data }) {
+  const { removeItem } = useContext(WishListContext);
   const { addToCart } = useContext(CartContext);
 
   return (

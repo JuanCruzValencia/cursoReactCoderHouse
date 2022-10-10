@@ -31,11 +31,23 @@ export function CartContextProvider({ children }) {
     setCartList(cartList.filter((product) => product.id !== id));
   };
 
+  const totals = () => {
+    return cartList.reduce((acc, act) => {
+      return acc + act.price * act.quantity;
+    }, 0);
+  };
+
+  const cartLength = () => {
+    return cartList.length;
+  };
+
   const data = {
     cartList,
     addToCart,
     removeList,
     deleteItem,
+    totals,
+    cartLength,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

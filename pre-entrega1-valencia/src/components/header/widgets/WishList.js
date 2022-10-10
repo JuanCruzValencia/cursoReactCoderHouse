@@ -1,13 +1,13 @@
-import { WhishListContext } from "../../../context/WhishListContext";
+import { WishListContext } from "../../../context/WishListContext";
 import { Modal, Button } from "react-bootstrap";
 import { useState, useContext } from "react";
-import { WhishCards } from "./WhishCards";
+import { WishCards } from "./WishCards";
 import { AiOutlineHeart } from "react-icons/ai";
-import './WhishList.css'
+import './WishList.css'
 
-export function WhishList() {
+export function WishList() {
   const [show, setShow] = useState(false);
-  const { whishList } = useContext(WhishListContext);
+  const { wishList } = useContext(WishListContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,9 +20,9 @@ export function WhishList() {
           <Modal.Title>Productos Favoritos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {whishList.length > 0 ? (
-            whishList.map((product) => {
-              return <WhishCards key={product.id} data={product} />;
+          {wishList.length > 0 ? (
+            wishList.map((product) => {
+              return <WishCards key={product.id} data={product} />;
             })
           ) : (
             <h3>No tiene ningun producto en Favoritos</h3>

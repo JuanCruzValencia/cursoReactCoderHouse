@@ -3,14 +3,8 @@ import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
 
 function Cart() {
-  const { cartList, removeList, deleteItem } = useContext(CartContext);
-
-  function cartTotal(data) {
-    return data.reduce((acc, value) => {
-      return acc + value.price;
-    }, 0);
-  }
-
+  const { cartList, removeList, deleteItem, totals } = useContext(CartContext);
+  console.log(cartList)
   return (
     <Container>
       <h2>Carrito de compras</h2>
@@ -20,7 +14,8 @@ function Cart() {
             <Card key={product.id}>
               <Card.Img src={product.image} />
               <Card.Title>{product.title}</Card.Title>
-              <Card.Text>{product.price}</Card.Text>
+              <Card.Text>${product.price}</Card.Text>
+              <span>{product.quantity}</span>
               <Button onClick={() => deleteItem(product.id)}>X</Button>
             </Card>
           );
@@ -32,13 +27,13 @@ function Cart() {
           <b>Precio del envio</b>
         </Stack>
         <Stack direction="horizontal">
-          <b>Total con envio</b>
-          <b>{cartTotal(cartList)}</b>
+          <b>Total con envio </b> 
+          <b>${totals().toFixed(2)}</b>
         </Stack>
       </Container>
       <Container className="border-top">
         <Button onClick={() => removeList()}>Vaciar Carrito</Button>
-        <Button size="lg">Comprar</Button>
+        <Button size="lg">Finalizar Compra</Button>
       </Container>
     </Container>
   );

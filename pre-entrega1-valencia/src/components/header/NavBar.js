@@ -2,15 +2,12 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import WishWidget from "./widgets/WishWidget";
 import SearchBar from "./SearchBar";
-import { MdOutlineShoppingBag } from "react-icons/md";
 import "./widgets/CartWidget.css";
 import { FaRegUser } from "react-icons/fa";
-import { CartContext } from "../../context/CartContext";
-import { useContext } from "react";
+import CartWidget from "./widgets/CartWidget";
 
 function NavBar() {
-  const { cartList } = useContext(CartContext);
-    
+
   return (
     <Navbar
       className="d-flex justify-content-between"
@@ -48,10 +45,9 @@ function NavBar() {
         <Container className="">
           <SearchBar />
         </Container>
-          <WishWidget />
+        <WishWidget />
         <Link to="/cart" className="icons__li">
-          <MdOutlineShoppingBag />
-          <span className="cart__count">{cartList.length}</span>
+          <CartWidget />
         </Link>
         <Link to="/login" className="icons__li">
           <FaRegUser />
