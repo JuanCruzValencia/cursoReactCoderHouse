@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 function Cart() {
   const { cartList, removeList, deleteItem, totals } = useContext(CartContext);
-  console.log(cartList)
+  
   return (
     <Container>
       <h2>Carrito de compras</h2>

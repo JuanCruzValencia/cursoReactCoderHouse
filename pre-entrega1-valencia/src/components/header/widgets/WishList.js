@@ -2,7 +2,7 @@ import { WishListContext } from "../../../context/WishListContext";
 import { Modal, Button } from "react-bootstrap";
 import { useState, useContext } from "react";
 import { WishCards } from "./WishCards";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import './WishList.css'
 
 export function WishList() {
@@ -13,7 +13,7 @@ export function WishList() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <AiOutlineHeart onClick={handleShow} className="heart__icon" />
+      {wishList.length > 0 ? <AiTwotoneHeart onClick={handleShow} className="heart__icon--red" /> :<AiOutlineHeart onClick={handleShow} className="heart__icon" />}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

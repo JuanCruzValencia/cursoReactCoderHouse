@@ -2,3 +2,9 @@
     font-size: 2em;
     cursor: pointer;
 }
+
+.heart__icon--red {
+    font-size: 2em;
+    cursor: pointer;
+    color: red;
+}

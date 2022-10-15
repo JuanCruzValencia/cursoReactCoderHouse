@@ -13,7 +13,7 @@ export function CartContextProvider({ children }) {
         ...item,
         quantity: quantity,
       });
-      setCartList(cartList);
+      setCartList([...cartList]);
     } else {
       alert("El producto ya se encuentra en el carrito");
     }
@@ -38,7 +38,11 @@ export function CartContextProvider({ children }) {
   };
 
   const cartLength = () => {
-    return cartList.length;
+    if (cartList.length > 0) {
+      return cartList.reduce((acc, act) => {
+        return acc + act.quantity;
+      }, 0);
+    }
   };
 
   const data = {

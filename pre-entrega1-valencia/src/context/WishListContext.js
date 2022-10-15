@@ -9,7 +9,7 @@ export function WishListContextProvider({ children }) {
   const addToWishList = (product) => {
     if (!isInWishList(product.id)) {
       wishList.push(product);
-      setWishList(wishList);
+      setWishList([...wishList]);
     } else {
       alert("El producto ya se encuentra en la lista de Deseos");
     }

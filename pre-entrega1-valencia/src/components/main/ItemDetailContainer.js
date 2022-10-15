@@ -1,19 +1,9 @@
 import ItemDetail from "./item/ItemDetail";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import DB from "./api/DB";
 import { Container } from "react-bootstrap";
-import './ItemDetailContainer.css'
-
-function getItem() {
-  const getSelectedProduct = new Promise((res, rej) => {
-    setTimeout(() => {
-      res(DB);
-      rej(Error);
-    }, 2000);
-  });
-  return getSelectedProduct;
-}
+import "./ItemDetailContainer.css";
+import { getProductById } from "../../firebase/db";
 
 function ItemDetailContainer() {
   const { id } = useParams();
@@ -21,8 +11,12 @@ function ItemDetailContainer() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getItem().then((res) => {
-      setSelectedProduct(res.find((prod) => prod.id === Number(id)));
+    getProductById(id).then((snapshot) => {
+      if (!snapshot.exists()) {
+        console.log("No se encontro el item que esta buscando");
+      }
+      setSelectedProduct(({ id: snapshot.id, ...snapshot.data() })
+      );
       setIsLoading(false);
     });
   }, [id]);

@@ -1,32 +1,33 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import "./ItemListContainer.css";
+import { getAllProducts, getProductsByCategory } from "../../firebase/db";
 import ItemList from "./ItemList";
-import DB from "./api/DB";
+import "./ItemListContainer.css";
 
 function ItemListContainer({ greeting }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { categoryId } = useParams();
 
+  //Traigo la informacion de firebase
   useEffect(() => {
-    const getAllProducts = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(DB);
-        rej(Error);
-      }, 2000);
-    });
     if (categoryId) {
-      getAllProducts.then((res) => {
-        setData(res.filter((product) => product.category === categoryId));
-        setIsLoading(false);
+      getProductsByCategory(categoryId).then((snapshop) => {
+        if (snapshop.size === 0) {
+          console.log("No results");
+        }
+        setData(snapshop.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
+      setIsLoading(false);
     } else {
-      getAllProducts.then((res) => {
-        setData(res);
-        setIsLoading(false);
+      getAllProducts().then((snapshop) => {
+        if (snapshop.size === 0) {
+          console.log("No results");
+        }
+        setData(snapshop.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
+      setIsLoading(false);
     }
   }, [categoryId]);
 

@@ -1,15 +1,21 @@
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { CartContext } from "../../../context/CartContext";
-import { useContext } from "react";
-import './CartWidget.css'
-
+import { useContext, useEffect, useState } from "react";
+import "./CartWidget.css";
+//El componente no se renderiza nuevamenter si agrego productos desde la lista de favoritos
 function CartWidget() {
   const { cartLength } = useContext(CartContext);
+  console.log(cartLength())
+  const [cart , setCart] = useState(cartLength())
+
+  useEffect(() => {
+    setCart(cartLength())
+  }, [cartLength])
 
   return (
     <>
       <MdOutlineShoppingBag />
-      <span className="cart__count">{cartLength()}</span>
+      {cartLength() !== undefined && <span className="cart__count">{cart}</span>}
     </>
   );
 }
