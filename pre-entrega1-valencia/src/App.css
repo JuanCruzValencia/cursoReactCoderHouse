@@ -7,6 +7,10 @@
   font-family: 'Lato', sans-serif;
 }
 
+body {
+  background-color: #FFD5AA;
+}
+
 a {
     color: #000;
 }

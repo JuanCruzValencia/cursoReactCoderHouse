@@ -1,26 +1,41 @@
 .count__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #000000;
-    border-radius: 7px;
+    justify-content: space-evenly;
+    min-width: 100%;
+    height: 50px;
     padding: .2rem;
     font-size: larger;
-    margin: 0;
     max-width: 200px;
-    height: 50px;
 }
 
-.count__container > button {
-    font-size: larger;
-    color: #000000;
-    background-color: transparent;
-    border: #000000;
-    min-width: 50px;
+.itemDetail__count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 50px;
 }
 
 .itemDetail__button {
     width: 200px;
-    background-color: #567;
+    background-color: #BD5A42;
     height: 50px;
-}
+    font-weight: 800;
+    border: none;
+  }
+  
+  .itemDetail__button:hover {
+    background-color: #F98E72 !important;
+  }
+
+  .itemCount__button {
+    background-color: #BD5A42;
+    font-size: 1.5em;
+    border: none;
+    height: 50px;
+    width: 70px;
+  }
+  
+  .itemCount__button:hover {
+    background-color: #F98E72 !important;
+  }

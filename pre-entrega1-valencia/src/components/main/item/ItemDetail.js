@@ -46,13 +46,14 @@ function ItemDetail({ product }) {
             />
           )}
           <Container>
+            <Card.Text className="text--uppercase">${product.price.toFixed(2)}</Card.Text>
             <Card.Title className="text--uppercase">{product.title}</Card.Title>
             <Card.Text className="text--large">{product.description}</Card.Text>
           </Container>
-          <Container className="flex-row">
+          <Container className="counter__container">
             {quantityToBuy > 0 ? (
               <Link to="/cart">
-                <Button className="itemCart__button">
+                <Button className="itemCart__btn">
                   Continuar al Carrito
                 </Button>
               </Link>

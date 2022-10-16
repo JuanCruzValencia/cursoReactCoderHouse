@@ -5,17 +5,18 @@ import "./CartWidget.css";
 //El componente no se renderiza nuevamenter si agrego productos desde la lista de favoritos
 function CartWidget() {
   const { cartLength } = useContext(CartContext);
-  console.log(cartLength())
-  const [cart , setCart] = useState(cartLength())
+  const [cart, setCart] = useState(cartLength());
 
   useEffect(() => {
-    setCart(cartLength())
-  }, [cartLength])
+    setCart(cartLength());
+  }, [cartLength]);
 
   return (
     <>
       <MdOutlineShoppingBag />
-      {cartLength() !== undefined && <span className="cart__count">{cart}</span>}
+      {cartLength() !== undefined && (
+        <span className="cart__count">{cart}</span>
+      )}
     </>
   );
 }

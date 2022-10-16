@@ -1,7 +1,6 @@
 .itemDetail__card {
     display: flex;
     text-align: center;
-    margin: 100px 0;
 }
 
 .itemDetail__body {
@@ -14,11 +13,6 @@
     max-height: 700px;
     width: 100%;
     object-fit: contain;
-}
-
-.flex-row {
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .flex-column {
@@ -41,8 +35,14 @@
     text-align: start;
 }
 
-.itemCart__button {
-    width: 200px;
-    background-color: #567;
+.itemCart__btn {
+    min-width: 150px;
+    background-color: #BD5A42;
     height: 50px;
-}
+    font-weight: 800;
+    border: none;
+  }
+  
+  .itemCart__btn:hover {
+    background-color: #F98E72 !important;
+  }

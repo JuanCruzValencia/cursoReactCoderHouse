@@ -16,19 +16,19 @@ export function WishList() {
       {wishList.length > 0 ? <AiTwotoneHeart onClick={handleShow} className="heart__icon--red" /> :<AiOutlineHeart onClick={handleShow} className="heart__icon" />}
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Productos Favoritos</Modal.Title>
+        <Modal.Header closeButton className="header-color">
+          <Modal.Title>Productos en Favoritos</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bg-color">
           {wishList.length > 0 ? (
             wishList.map((product) => {
               return <WishCards key={product.id} data={product} />;
             })
           ) : (
-            <h3>No tiene ningun producto en Favoritos</h3>
+            <h2>No tiene ningun producto en Favoritos</h2>
           )}
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="header-color">
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

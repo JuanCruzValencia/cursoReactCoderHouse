@@ -2,9 +2,9 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import WishWidget from "./widgets/WishWidget";
 import SearchBar from "./SearchBar";
-import "./widgets/CartWidget.css";
 import { FaRegUser } from "react-icons/fa";
 import CartWidget from "./widgets/CartWidget";
+import "./Navbar.css";
 
 function NavBar() {
 
@@ -12,7 +12,7 @@ function NavBar() {
     <Navbar
       className="d-flex justify-content-between"
       expand="lg"
-      id="nabvar__container"
+      id="navbar__container"
     >
       <Container className="d-flex justify-content-start align-items-center p-2">
         <Navbar.Brand as={Link} to="/" className="ps-4 fs-3">

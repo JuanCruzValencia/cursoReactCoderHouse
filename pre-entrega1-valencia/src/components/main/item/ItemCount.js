@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Button, Stack } from "react-bootstrap";
 import "./ItemCount.css";
 
 function ItemCount({ stock, initial, onAdd }) {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   function handleAddClick() {
     if (counter >= stock) {
@@ -13,7 +13,7 @@ function ItemCount({ stock, initial, onAdd }) {
   }
 
   function handleSubClick() {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter((prevCounter) => prevCounter - 1);
     } else {
       return;
@@ -21,17 +21,19 @@ function ItemCount({ stock, initial, onAdd }) {
   }
 
   return (
-    <Container display="flex">
-      <Row>
-        <Col className="count__container">
-          <Button onClick={handleSubClick}>-</Button>
-          <span>{counter}</span>
-          <Button onClick={handleAddClick}>+</Button>
-        </Col>
-        <Col>
-          <Button className="itemDetail__button" onClick={() => onAdd(counter)}>Agregar al carrito</Button>
-        </Col>
-      </Row>
+    <Container className='count__container'>
+      <Stack direction="horizontal" className='counter__container'>
+        <Button onClick={handleSubClick} className="itemCount__button">
+          -
+        </Button>
+        <span className="itemDetail__count">{counter}</span>
+        <Button onClick={handleAddClick} className="itemCount__button">
+          +
+        </Button>
+      </Stack>
+      <Button className="itemDetail__button" onClick={() => onAdd(counter)}>
+        Agregar al carrito
+      </Button>
     </Container>
   );
 }

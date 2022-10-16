@@ -1,19 +1,28 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Stack } from "react-bootstrap";
 import { WishListContext } from "../../../context/WishListContext";
 import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
+import { BsTrash } from "react-icons/bs";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import "./WishCard.css";
 
 export function WishCards({ data }) {
   const { deleteItem } = useContext(WishListContext);
   const { addToCart } = useContext(CartContext);
 
   return (
-    <Card>
-      <Card.Img src={data.image} />
-      <Card.Body>
-        <Card.Title>{data.title}</Card.Title>
-        <Button onClick={() => deleteItem(data.id)}>X</Button>
-        <Button onClick={() => addToCart(data, 1)}>Agregar al Carrito</Button>
+    <Card className="wishList__container">
+      <Card.Img src={data.image} className="wishList__image" />
+      <Card.Body className="wishList__body">
+        <Card.Title className="wishList__title">{data.title}</Card.Title>
+        <Stack className="wishList--btn__container">
+          <Button onClick={() => deleteItem(data.id)} className="wishList__btn">
+            <BsTrash />
+          </Button>
+          <Button onClick={() => addToCart(data, 1)} className="wishList__btn">
+            <MdOutlineShoppingBag />
+          </Button>
+        </Stack>
       </Card.Body>
     </Card>
   );

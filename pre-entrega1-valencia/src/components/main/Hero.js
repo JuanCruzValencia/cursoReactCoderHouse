@@ -1,6 +1,6 @@
 import { Button, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './Hero.css'
+import "./Hero.css";
 
 function Hero() {
   return (
@@ -13,7 +13,11 @@ function Hero() {
         />
         <Carousel.Caption>
           <h3 className="fs-1 m-5">Compra comodo a un Click</h3>
-          <Button variant="dark mb-5" className="signin__btn">Registrate</Button>
+          <Link to="/register">
+            <Button variant="dark mb-5" className="signin__btn">
+              Registrate
+            </Button>
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className="carousel__item--container">
@@ -25,7 +29,11 @@ function Hero() {
 
         <Carousel.Caption>
           <h3 className="fs-1 m-5">Desde donde quieras</h3>
-          <Link to='/register'><Button variant="dark mb-5" className="signin__btn">Registrate</Button></Link>
+          <Link to="/register">
+            <Button variant="dark mb-5" className="signin__btn">
+              Registrate
+            </Button>
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

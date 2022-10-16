@@ -1,8 +1,9 @@
 .footer__container {
-    background-color: #47624f;
+    background-color: #9D7758;
+    font-weight: 700;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    padding: 2rem;
 }
