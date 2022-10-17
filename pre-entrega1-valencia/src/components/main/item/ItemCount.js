@@ -1,28 +1,12 @@
-import { useState } from "react";
 import { Container, Button, Stack } from "react-bootstrap";
+import { useCounter } from "../../../hooks/useCounter";
 import "./ItemCount.css";
 
 function ItemCount({ stock, initial, onAdd }) {
-  const [counter, setCounter] = useState(1);
-
-  function handleAddClick() {
-    if (counter >= stock) {
-      return;
-    }
-    setCounter((prevCounter) => prevCounter + 1);
-  }
-
-  function handleSubClick() {
-    if (counter > 1) {
-      setCounter((prevCounter) => prevCounter - 1);
-    } else {
-      return;
-    }
-  }
-
+  const { counter, handleAddClick, handleSubClick } = useCounter();
   return (
-    <Container className='count__container'>
-      <Stack direction="horizontal" className='counter__container'>
+    <Container className="count__container">
+      <Stack direction="horizontal" className="counter__container">
         <Button onClick={handleSubClick} className="itemCount__button">
           -
         </Button>

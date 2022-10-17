@@ -1,39 +1,31 @@
 import { Form, Button, Container } from "react-bootstrap";
-import { useState } from "react";
+import { useForm } from "../../../../hooks/useForm";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
-  const USER = {
-    userName,
-    password,
-  };
+  const {form, handleChange} = useForm({
+    email: '',
+    password: '',
+  })
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    USER.userName = userName;
-    USER.password = password;
-    console.log(JSON.stringify(USER));
-    //Form submission happens here
+    console.log(JSON.stringify(form));
   };
 
-  const handleChange = (callback, event) => {
-    callback(event.target.value);
-  };
 
   return (
     <Container className="login__container">
       <h2>Login</h2>
       <Form className="login__form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
-          <Form.Label>Usuario</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="text"
             className="login__input"
-            onChange={(e) => handleChange(setUserName, e)}
+            onChange={handleChange}
+            name='email'
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -41,7 +33,8 @@ function Login() {
           <Form.Control
             type="password"
             className="login__input"
-            onChange={(e) => handleChange(setPassword, e)}
+            onChange={handleChange}
+            name='password'
           />
         </Form.Group>
         <Form.Group>
