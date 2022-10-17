@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getAllProducts, getProductsByCategory } from "../../firebase/db";
 import ItemList from "./ItemList";
+import SpinnerComp from "./Spinner";
 import "./ItemListContainer.css";
 
 function ItemListContainer({ greeting }) {
@@ -35,7 +36,7 @@ function ItemListContainer({ greeting }) {
     <Container className="shop__container">
       <h2 className="shop__title">{greeting}</h2>
       <div id="cards__container">
-        {isLoading ? <span>Loading...</span> : <ItemList data={data} />}
+        {isLoading ? <SpinnerComp /> : <ItemList data={data} />}
       </div>
     </Container>
   );

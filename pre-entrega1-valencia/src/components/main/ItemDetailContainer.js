@@ -2,8 +2,9 @@ import ItemDetail from "./item/ItemDetail";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import "./ItemDetailContainer.css";
 import { getProductById } from "../../firebase/db";
+import SpinnerComp from "./Spinner";
+import "./ItemDetailContainer.css";
 
 function ItemDetailContainer() {
   const { id } = useParams();
@@ -15,19 +16,14 @@ function ItemDetailContainer() {
       if (!snapshot.exists()) {
         console.log("No se encontro el item que esta buscando");
       }
-      setSelectedProduct(({ id: snapshot.id, ...snapshot.data() })
-      );
+      setSelectedProduct({ id: snapshot.id, ...snapshot.data() });
       setIsLoading(false);
     });
   }, [id]);
 
   return (
     <Container className="itemDetail__container">
-      {isLoading ? (
-        <span>Loading...</span>
-      ) : (
-        <ItemDetail product={selectedProduct} />
-      )}
+      {isLoading ? <SpinnerComp /> : <ItemDetail product={selectedProduct} />}
     </Container>
   );
 }
