@@ -15,8 +15,8 @@ function Item({ product }) {
         <AiTwotoneHeart
           className="heart__filled"
           onClick={() => {
-            deleteItem(product.id)
-            setFav(!fav)
+            deleteItem(product.id);
+            setFav(!fav);
           }}
         />
       ) : (
@@ -30,7 +30,9 @@ function Item({ product }) {
       )}
       <Card.Img variant="top" src={product.image} />
       <Card.Body className="itemCard__body">
-        <Card.Text className="itemCard__price">${product.price.toFixed(2)}</Card.Text>
+        <Card.Text className="itemCard__price">
+          ${product.price.toFixed(2)}
+        </Card.Text>
         <Card.Title>{product.title}</Card.Title>
         <Link to={`/item/${product.id}`}>
           <Button className="itemCard__btn">Ver</Button>

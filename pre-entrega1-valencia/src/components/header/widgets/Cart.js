@@ -15,7 +15,7 @@ function Cart() {
         {cartList.length <= 0 ? (
           <Container className="cart__container--empty">
             <h3>EL carrito se encuentra vacio...</h3>
-            <Link to={'/'}>
+            <Link to={"/"}>
               <Button className="btn--toShop">Ir al shop</Button>
             </Link>
           </Container>
@@ -48,7 +48,9 @@ function Cart() {
         <Button className="itemCart__btn" onClick={() => removeList()}>
           Vaciar Carrito
         </Button>
-        <Button className="itemCart__btn">Finalizar Compra</Button>
+        <Link to={'/checkout'}>
+          <Button className="itemCart__btn">Finalizar Compra</Button>
+        </Link>
       </Container>
     </Container>
   );
