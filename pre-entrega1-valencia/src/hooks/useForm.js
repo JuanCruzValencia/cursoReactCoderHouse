@@ -12,14 +12,8 @@ export const useForm = () => {
     });
   };
 
-  const handleSubmit = (event, form) => {
-    event.preventDefault();
-    console.log(JSON.stringify(form));
-  };
-
   return {
     form,
     handleChange,
-    handleSubmit,
   };
 };

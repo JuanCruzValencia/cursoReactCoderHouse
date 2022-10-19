@@ -3,6 +3,7 @@ import { useLocalStorage } from "../localStorage/useLocalStorage";
 import { setUser } from "../firebase/db";
 import {
   getAuth,
+  signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -10,50 +11,57 @@ import {
 export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
-  const [storage, setStorage] = useLocalStorage("userLogged", false);
+  const [storage, setStorage] = useLocalStorage("userLogged", null);
 
-  //Funcion para registrar a nuevo usuario
-  //recibe un nombre, mail y contrasena
-  //lo guarda en firestore
+  // Funcion para registrar a nuevo usuario
+  // Recibe un nombre, mail y contrasena
+  // Lo guarda en firestore
   const registerUser = async (data) => {
     const auth = getAuth();
-    const res = await createUserWithEmailAndPassword(
-      auth,
-      data.email,
-      data.password
-    );
-    const user = res.user;
-    setUser({
-      ...data,
-      uid: user.uid
-    });
-    console.log(user);
-  };
-
-  const getUser = (email, password) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
-      })
-      .catch((error) => {
-        console.log(error);
+    try {
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = res.user;
+      setUser({
+        ...data,
+        uid: user.uid,
       });
+      setStorage(user);
+    } catch (error) {
+      alert(error);
+    }
   };
 
-  //funcion que modifica el storage a conectado/deconectado
-  const isLogged = () => {
-    storage ? setStorage(!storage) : setStorage(!storage);
+  // Funcion para ingresar con un usuario ya registrado
+  // Toma el ingreso de los imputs
+  // Los compara con los datos y devuelve a pagina de inicio con el usuario logueado
+  const signIn = async ({ email, password }) => {
+    const auth = getAuth();
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      setStorage(user);
+      // enviar a la pagina principal
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const logOut = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log("signed out");
+      setStorage(null);
+    });
   };
 
   const data = {
     storage,
     registerUser,
-    getUser,
-    isLogged,
+    signIn,
+    logOut,
   };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;

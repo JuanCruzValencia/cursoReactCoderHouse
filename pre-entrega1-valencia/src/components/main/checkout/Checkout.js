@@ -2,15 +2,22 @@ import { Button, Card, Container, Form } from "react-bootstrap";
 import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
 import { useForm } from "../../../hooks/useForm";
+import { setOrder } from "../../../firebase/db";
 
 export const Checkout = () => {
   const { cartList, totals } = useContext(CartContext);
-  const { form, handleChange, handleSubmit } = useForm({
+  const { form, handleChange } = useForm({
     fullName: "",
     phoneNumber: "",
     email: "",
     emailValidate: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const orderId = await setOrder(form, cartList, totals);
+    console.log(orderId);
+  };
 
   return (
     <Container>
@@ -41,7 +48,7 @@ export const Checkout = () => {
             />
             <Form.Label>Telefono</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               className="checkout__input"
               name="phoneNumber"
               onChange={handleChange}

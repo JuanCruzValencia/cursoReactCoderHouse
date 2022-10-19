@@ -14,6 +14,10 @@ import Footer from "./components/footer/Footer";
 import { useEffect, useRef } from "react";
 import { getProductsFromApi } from "./firebase/api/fetch";
 import "./App.css";
+import { firebaseConfig } from "./firebase/fireStore";
+import { initializeApp } from "firebase/app";
+initializeApp(firebaseConfig);
+
 
 function App() {
   const fetchStatus = useRef(false);
@@ -22,7 +26,6 @@ function App() {
     if (fetchStatus.current === false) {
       getProductsFromApi();
     }
-
     return () => {
       fetchStatus.current = true;
     };

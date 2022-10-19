@@ -2,18 +2,20 @@ import { Form, Button, Container } from "react-bootstrap";
 import { useForm } from "../../../../hooks/useForm";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import { useContext } from "react";
+import { UserContext } from "../../../../context/UserContext";
 
 function Login() {
-  const {form, handleChange} = useForm({
-    email: '',
-    password: '',
-  })
+  const { signIn } = useContext(UserContext);
+  const { form, handleChange } = useForm({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(JSON.stringify(form));
+    signIn(form);
   };
-
 
   return (
     <Container className="login__container">
@@ -25,7 +27,7 @@ function Login() {
             type="text"
             className="login__input"
             onChange={handleChange}
-            name='email'
+            name="email"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -34,7 +36,7 @@ function Login() {
             type="password"
             className="login__input"
             onChange={handleChange}
-            name='password'
+            name="password"
           />
         </Form.Group>
         <Form.Group>
