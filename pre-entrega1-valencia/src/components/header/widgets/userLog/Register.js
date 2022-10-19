@@ -1,21 +1,29 @@
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "../../../../hooks/useForm";
+import { useContext } from "react";
+import { UserContext } from "../../../../context/UserContext";
 import "./Register.css";
 
 function Register() {
+  const { registerUser } = useContext(UserContext);
   const { form, handleChange } = useForm({
-    useName: "",
+    userName: "",
     email: "",
     password: "",
     passwordConfirm: "",
     adress: "",
-    city: "",
+    phone: "",
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(JSON.stringify(form));
+    const { password, passwordConfirm } = form;
+    if (password === passwordConfirm) {
+      registerUser(form);
+    } else {
+      alert("Las contrasenas no coinciden");
+    }
   };
 
   return (
@@ -73,11 +81,11 @@ function Register() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" as={Col} controlId="formGridAddress1">
-            <Form.Label>Cuidad</Form.Label>
+          <Form.Group className="mb-3" as={Col}>
+            <Form.Label>Telefono</Form.Label>
             <Form.Control
               className="register__input"
-              name="city"
+              name="phone"
               onChange={handleChange}
             />
           </Form.Group>
