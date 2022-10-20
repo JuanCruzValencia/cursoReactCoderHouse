@@ -11,7 +11,7 @@ import {
 export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
-  const [storage, setStorage] = useLocalStorage("userLogged", null);
+  const [userState, setUserState] = useLocalStorage("userLogged", null);
 
   // Funcion para registrar a nuevo usuario
   // Recibe un nombre, mail y contrasena
@@ -29,7 +29,8 @@ export const UserContextProvider = ({ children }) => {
         ...data,
         uid: user.uid,
       });
-      setStorage(user);
+      setUserState(user);
+      //enviar a la pagina principal
     } catch (error) {
       alert(error);
     }
@@ -42,7 +43,7 @@ export const UserContextProvider = ({ children }) => {
     const auth = getAuth();
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
-      setStorage(user);
+      setUserState(user);
       // enviar a la pagina principal
     } catch (error) {
       alert(error);
@@ -52,13 +53,12 @@ export const UserContextProvider = ({ children }) => {
   const logOut = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
-      console.log("signed out");
-      setStorage(null);
+      setUserState(null);
     });
   };
 
   const data = {
-    storage,
+    userState,
     registerUser,
     signIn,
     logOut,

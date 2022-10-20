@@ -3,9 +3,10 @@ import { CartContext } from "../../../context/CartContext";
 import { useContext } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { setOrder } from "../../../firebase/db";
+import "./Checkout.css";
 
 export const Checkout = () => {
-  const { cartList, totals } = useContext(CartContext);
+  const { cartList, totals, removeList } = useContext(CartContext);
   const { form, handleChange } = useForm({
     fullName: "",
     phoneNumber: "",
@@ -15,12 +16,12 @@ export const Checkout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const orderId = await setOrder(form, cartList, totals);
-    console.log(orderId);
+    await setOrder(form, cartList, totals);
+    removeList();
   };
 
   return (
-    <Container>
+    <Container className='checkout__container'>
       <Container className="checkout__cart">
         <h2>Mi Carrito</h2>
         {cartList.map((product) => {
@@ -37,7 +38,7 @@ export const Checkout = () => {
       </Container>
       <Container className="checkout__order">
         <h2>Mis Datos</h2>
-        <Form onSubmit={(e) => handleSubmit(e, form)}>
+        <Form onSubmit={(e) => handleSubmit(e, form)} className='checkout__form'>
           <Form.Group>
             <Form.Label>Nombre y Apellido</Form.Label>
             <Form.Control
@@ -68,7 +69,7 @@ export const Checkout = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button type="submit">Generar Orden</Button>
+          <Button type="submit" className='checkout__btn'>Generar Orden</Button>
           {/* boton dentro de un condicional */}
         </Form>
       </Container>

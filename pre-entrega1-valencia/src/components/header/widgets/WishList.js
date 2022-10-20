@@ -29,7 +29,7 @@ export function WishList() {
           )}
         </Modal.Body>
         <Modal.Footer className="header-color">
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className='wishList__btn' onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>

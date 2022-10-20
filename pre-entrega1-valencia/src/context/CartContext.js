@@ -1,9 +1,8 @@
-//import del hook y context
 import { createContext } from "react";
 import { useLocalStorage } from "../localStorage/useLocalStorage";
-//create and export context
+
 export const CartContext = createContext({});
-//export custom function contextProvider
+
 export function CartContextProvider({ children }) {
   const [cartList, setCartList] = useLocalStorage("cart", []);
 

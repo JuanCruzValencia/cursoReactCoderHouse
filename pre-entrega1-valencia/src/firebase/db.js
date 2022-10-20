@@ -10,7 +10,6 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-
 // Funcion que trae todos los productos
 export const getAllProducts = () => {
   const db = getFirestore();
@@ -66,10 +65,9 @@ export const setOrder = async (buyer, cart, total) => {
     },
     total: total(),
     date: serverTimestamp(),
-    items: [...cart]
-  }
+    items: [...cart],
+  };
   const resolve = await addDoc(collection(db, "orders"), order);
-  console.log(resolve)
   return resolve.id;
 };
 
@@ -78,13 +76,21 @@ export const setOrder = async (buyer, cart, total) => {
 // Los guarda en una nueva coleccion 'users' en fireStore
 export const setUser = async (data) => {
   const db = getFirestore();
-  const user = await addDoc(collection(db, "users"), {
+  const user = {
     userName: data.userName,
     email: data.email,
     password: data.password,
     phoneNumber: data.phone,
     adress: data.adress,
     uid: data.uid,
-  });
-  console.log(user);
+  };
+  const resolve = await addDoc(collection(db, "users"), user);
+  console.log(resolve);
+};
+
+// Funcion que trae mis ordenes de firestore
+export const getAllOrders = () => {
+  const db = getFirestore();
+  const orderCollecition = collection(db, "orders");
+  return getDocs(orderCollecition);
 };

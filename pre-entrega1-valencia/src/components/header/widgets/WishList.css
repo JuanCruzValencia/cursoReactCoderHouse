@@ -16,3 +16,13 @@
     cursor: pointer;
     color: red;
 }
+
+.wishList__btn {
+  background-color: #bd5a42;
+  font-weight: 800;
+  border: none;
+}
+
+.wishList__btn:hover {
+    background-color: #f98e72 !important;
+  }
