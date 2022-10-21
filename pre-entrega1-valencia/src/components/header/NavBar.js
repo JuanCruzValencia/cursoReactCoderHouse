@@ -1,7 +1,6 @@
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import WishWidget from "./widgets/WishWidget";
-import SearchBar from "./SearchBar";
 import { FaRegUser } from "react-icons/fa";
 import CartWidget from "./widgets/CartWidget";
 import "./Navbar.css";
@@ -36,15 +35,9 @@ function NavBar() {
           <Nav.Link as={Link} to="/about" className="nav__li">
             About
           </Nav.Link>
-          <Nav.Link as={Link} to="/contact" className="nav__li">
-            Contact
-          </Nav.Link>
         </Nav>
       </Container>
       <Container className="d-flex justify-content-end align-items-center pe-4">
-        <Container className="">
-          <SearchBar />
-        </Container>
         <WishWidget />
         <Link to="/cart" className="icons__li">
           <CartWidget />

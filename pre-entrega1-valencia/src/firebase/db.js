@@ -59,9 +59,9 @@ export const setOrder = async (buyer, cart, total) => {
   const db = getFirestore();
   let order = {
     buyer: {
-      name: buyer.fullName,
+      name: buyer.name,
       email: buyer.email,
-      phone: buyer.phoneNumber,
+      phone: buyer.phone,
     },
     total: total(),
     date: serverTimestamp(),
@@ -77,15 +77,14 @@ export const setOrder = async (buyer, cart, total) => {
 export const setUser = async (data) => {
   const db = getFirestore();
   const user = {
-    userName: data.userName,
+    name: data.name,
     email: data.email,
     password: data.password,
     phoneNumber: data.phone,
     adress: data.adress,
     uid: data.uid,
   };
-  const resolve = await addDoc(collection(db, "users"), user);
-  console.log(resolve);
+  await addDoc(collection(db, "users"), user);
 };
 
 // Funcion que trae mis ordenes de firestore
@@ -94,3 +93,13 @@ export const getAllOrders = () => {
   const orderCollecition = collection(db, "orders");
   return getDocs(orderCollecition);
 };
+
+// Funcion para traer los datos del usuario
+// Recibe el auth del login
+// Devuelve los datos del usuario
+export const getUser = (email) => {
+  const db = getFirestore();
+  const userData = query(collection(db, "users"), where("email", "==", email));
+  return getDocs(userData);
+};
+

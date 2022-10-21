@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useLocalStorage } from "../localStorage/useLocalStorage";
-import { setUser } from "../firebase/db";
+import { getUser, setUser } from "../firebase/db";
 import {
   getAuth,
   signOut,
@@ -12,7 +12,6 @@ export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
   const [userState, setUserState] = useLocalStorage("userLogged", null);
-
   // Funcion para registrar a nuevo usuario
   // Recibe un nombre, mail y contrasena
   // Lo guarda en firestore
@@ -29,7 +28,7 @@ export const UserContextProvider = ({ children }) => {
         ...data,
         uid: user.uid,
       });
-      setUserState(user);
+      setUserState(data);
       //enviar a la pagina principal
     } catch (error) {
       alert(error);
@@ -42,9 +41,10 @@ export const UserContextProvider = ({ children }) => {
   const signIn = async ({ email, password }) => {
     const auth = getAuth();
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
-      setUserState(user);
-      // enviar a la pagina principal
+      console.log(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
+      const resolve = await getUser(email)
+      setUserState(resolve.docs[0].data());
     } catch (error) {
       alert(error);
     }

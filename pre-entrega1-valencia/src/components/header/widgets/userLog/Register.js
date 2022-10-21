@@ -9,7 +9,7 @@ import { UserDetail } from "../../../main/user/UserDetail";
 function Register() {
   const { userState, registerUser } = useContext(UserContext);
   const { form, handleChange } = useForm({
-    userName: "",
+    name: "",
     email: "",
     password: "",
     passwordConfirm: "",
@@ -37,12 +37,12 @@ function Register() {
           <Form className="register__form" onSubmit={handleSubmit}>
             <Row className="mb-3">
               <Form.Group as={Col}>
-                <Form.Label>Usuario</Form.Label>
+                <Form.Label>Nombre</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="User Name"
+                  placeholder="name"
                   className="register__input"
-                  name="userName"
+                  name="name"
                   onChange={handleChange}
                 />
                 <Form.Label>Email</Form.Label>
