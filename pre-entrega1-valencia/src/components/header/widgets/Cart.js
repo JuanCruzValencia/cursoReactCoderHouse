@@ -11,7 +11,7 @@ function Cart() {
   return (
     <Container className="cart__container">
       <h2>Carrito de compras</h2>
-      <Container>
+      <Container className='cart__card--container'>
         {cartList.length <= 0 ? (
           <Container className="cart__container--empty">
             <h3>EL carrito se encuentra vacio...</h3>
@@ -24,7 +24,7 @@ function Cart() {
             return (
               <Card key={product.id} className="cart__card">
                 <Card.Img src={product.image} />
-                <Card.Title>{product.title}</Card.Title>
+                <Card.Title className="cart__card--title">{product.title}</Card.Title>
                 <Card.Text className="cart__card--text">
                   ${product.price.toFixed(2)} X {product.quantity}
                 </Card.Text>
@@ -45,11 +45,11 @@ function Cart() {
             <b>${totals().toFixed(2)}</b>
           </p>
         </Stack>
-        <Button className="itemCart__btn" onClick={() => removeList()}>
+        <Button className="itemCart__btn" onClick={() => removeList()} disabled={cartList.length > 0 ? false : true}>
           Vaciar Carrito
         </Button>
         <Link to={'/checkout'}>
-          <Button className="itemCart__btn">Finalizar Compra</Button>
+          <Button className="itemCart__btn" disabled={cartList.length > 0 ? false : true}>Finalizar Compra</Button>
         </Link>
       </Container>
     </Container>

@@ -19,7 +19,7 @@ function Login() {
   };
 
   return (
-    <>
+    <Container>
       {userState ? (
         <UserDetail />
       ) : (
@@ -55,7 +55,7 @@ function Login() {
           </Link>
         </Container>
       )}
-    </>
+    </Container>
   );
 }
 

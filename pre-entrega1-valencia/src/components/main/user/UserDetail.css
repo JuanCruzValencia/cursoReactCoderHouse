@@ -6,11 +6,19 @@
   background-color: #faf1cb;
 }
 
+.userDetail__cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .userDetail__cardGroup {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: 1px solid #000;
+  padding: 1rem;
 }
 
 .userDetail__btn {

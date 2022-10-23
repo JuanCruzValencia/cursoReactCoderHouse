@@ -38,10 +38,11 @@ export const Checkout = () => {
           {cartList.map((product) => {
             return (
               <Card key={product.id} className="checkout__card">
-                <Card.Title>{product.title}</Card.Title>
+                <Card.Title as="p">{product.title}</Card.Title>
                 <Card.Text className="checkout__card--text">
-                  ${product.price.toFixed(2)} X {product.quantity}
+                  ${product.price.toFixed(2)}
                 </Card.Text>
+                <Card.Text>x{product.quantity}</Card.Text>
               </Card>
             );
           })}
@@ -57,11 +58,11 @@ export const Checkout = () => {
         {userState ? (
           <Container>
             <Card className="order__card">
-              <Card.Title>Nombre y Apellido: {userState.name}</Card.Title>
+              <Card.Title>Nombre: {userState.name}</Card.Title>
               <Card.Text>Email: {userState.email}</Card.Text>
               <Card.Text>Telefono: {userState.phone}</Card.Text>
               {orderId ? (
-                <Alert variant="success">{orderId}</Alert>
+                <Alert variant="success">Orden: {orderId}</Alert>
               ) : (
                 <Button onClick={() => handleClick()} className="order__btn">
                   Generar Orden
@@ -107,7 +108,7 @@ export const Checkout = () => {
             {orderId ? (
               <Alert variant="success">{orderId}</Alert>
             ) : (
-              <Button type="submit" className="checkout__btn">
+              <Button type="submit" className="checkout__btn" disabled={form.name && form.email && form.emailValidate && form.phone ? false : true}>
                 Generar Orden
               </Button>
             )}

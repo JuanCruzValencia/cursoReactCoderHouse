@@ -28,7 +28,7 @@ function Register() {
   };
 
   return (
-    <>
+    <Container>
       {userState ? (
         <UserDetail />
       ) : (
@@ -54,7 +54,6 @@ function Register() {
                   onChange={handleChange}
                 />
               </Form.Group>
-
               <Form.Group as={Col}>
                 <Form.Label>Contrasena</Form.Label>
                 <Form.Control
@@ -64,7 +63,7 @@ function Register() {
                   name="password"
                   onChange={handleChange}
                 />
-                <Form.Label>Vuelva a introducir la Contrasena</Form.Label>
+                <Form.Label>Repita Contrasena</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Password"
@@ -74,7 +73,6 @@ function Register() {
                 />
               </Form.Group>
             </Row>
-
             <Row className="mb-3">
               <Form.Group className="mb-3" as={Col}>
                 <Form.Label>Direccion</Form.Label>
@@ -85,7 +83,6 @@ function Register() {
                   onChange={handleChange}
                 />
               </Form.Group>
-
               <Form.Group className="mb-3" as={Col}>
                 <Form.Label>Telefono</Form.Label>
                 <Form.Control
@@ -95,14 +92,6 @@ function Register() {
                 />
               </Form.Group>
             </Row>
-
-            <Form.Group className="mb-3" id="formGridCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="Deseo recibir notificaciones"
-              />
-            </Form.Group>
-
             <Button type="submit" className="register__btn">
               Registrarse
             </Button>
@@ -112,7 +101,7 @@ function Register() {
           </Link>
         </Container>
       )}
-    </>
+    </Container>
   );
 }
 

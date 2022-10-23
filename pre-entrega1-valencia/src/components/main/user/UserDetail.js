@@ -19,9 +19,9 @@ export const UserDetail = () => {
     <Container className="userDetail__container">
       <Card className="userDetail__card">
         <Card.Header as="h2">
-          Bienvenido <b>{userState.email}</b>
+          Bienvenido <b>{userState.name}</b>
         </Card.Header>
-        <Card.Body>
+        <Card.Body className="userDetail__cardBody">
           <Card.Title as="h4">Mis Compras</Card.Title>
           <CardGroup className="userDetail__cardGroup">
             {orders.length > 0 ? (
@@ -53,7 +53,7 @@ export const UserDetail = () => {
                 );
               })
             ) : (
-              <h4>No realizo ninguna compra</h4>
+              <p>No realizo ninguna compra</p>
             )}
           </CardGroup>
           <Link to={"/"}>

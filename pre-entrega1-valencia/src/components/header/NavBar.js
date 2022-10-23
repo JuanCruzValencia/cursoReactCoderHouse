@@ -33,7 +33,7 @@ function NavBar() {
             </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link as={Link} to="/about" className="nav__li">
-            About
+            Sobre mi
           </Nav.Link>
         </Nav>
       </Container>

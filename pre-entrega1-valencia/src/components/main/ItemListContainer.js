@@ -35,9 +35,13 @@ function ItemListContainer({ greeting }) {
   return (
     <Container className="shop__container">
       <h2 className="shop__title">{greeting}</h2>
-      <div id="cards__container">
-        {isLoading ? <SpinnerComp /> : <ItemList data={data} />}
-      </div>
+      {isLoading ? (
+        <SpinnerComp />
+      ) : (
+        <div id="cards__container">
+          <ItemList data={data} />
+        </div>
+      )}
     </Container>
   );
 }
